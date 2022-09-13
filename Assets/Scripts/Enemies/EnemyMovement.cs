@@ -21,12 +21,9 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, randomPositionBarricade, _speed * Time.deltaTime);
             if(transform.position == randomPositionBarricade)
-            {
-                
+            {   
                 inPosition = true;
                 movingLeft = true;
-        
-   
             }
         }
         if(inPosition == true)

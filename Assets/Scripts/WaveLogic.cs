@@ -4,7 +4,7 @@ public class Wave
 {
     public string waveName;
     public int numberOfEnemies;
-    public GameObject[] typeOfEnemies;
+    public GameObject typeOfEnemies;
     public float spawnInterval;
 }
 
@@ -40,9 +40,18 @@ public class WaveLogic : MonoBehaviour
     {
         if (canSpawn && nextSpawnTime < Time.time)
         {
-            GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
+            GameObject randomEnemy = currentWave.typeOfEnemies;
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
+            if(currentWaveNumber == 2)
+            {
+                
+                Instantiate(randomEnemy, spawnBoss.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
+            }
+            
             currentWave.numberOfEnemies--;
             nextSpawnTime = Time.time + currentWave.spawnInterval;
             if(currentWave.numberOfEnemies == 0)
