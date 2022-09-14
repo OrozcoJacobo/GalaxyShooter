@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
 {
-    [SerializeField] private GameObject _laser;
-    [SerializeField] private float _shootInterval;
+    [SerializeField] private GameObject _laserPrefab;
+    private float _fireRate = 3.0f;
+    private float _canFire = -1;
     // Start is called before the first frame update
 
 
     // Update is called once per frame
     void Update()
     {
-        InvokeRepeating(nameof(FireLaser), _shootInterval, _shootInterval);
-    }
-
-    private void FireLaser()
-    {
-        float laserOffset = -1f;
-        Vector3 laserStartPosition = (transform.position + new Vector3(0, laserOffset, 0));
-        Instantiate(_laser, laserStartPosition, Quaternion.identity);
+        if (Time.time > _canFire)
+        {
+            _fireRate = Random.Range(3f, 7f);
+            _canFire = Time.time + _fireRate;
+            GameObject enemyLaser = Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

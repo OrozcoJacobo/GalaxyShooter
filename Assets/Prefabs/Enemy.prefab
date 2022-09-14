@@ -173,5 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1820c95d90d07ff4b8e5759b3ada7bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laser: {fileID: 876467222580910348, guid: 957d33791c41d7b4b8d38f72298b1581, type: 3}
-  _shootInterval: 5
+  _laserPrefab: {fileID: 876467222580910348, guid: 957d33791c41d7b4b8d38f72298b1581, type: 3}
