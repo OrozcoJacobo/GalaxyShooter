@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 [System.Serializable]
 public class Wave
 {
@@ -6,6 +8,7 @@ public class Wave
     public int numberOfEnemies;
     public GameObject typeOfEnemies;
     public float spawnInterval;
+    
 }
 
 public class WaveLogic : MonoBehaviour
@@ -16,11 +19,16 @@ public class WaveLogic : MonoBehaviour
     private Transform[] spawnPoints;
     [SerializeField]
     private Transform spawnBoss;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    public TextMeshProUGUI waveName;
 
     private Wave currentWave;
     private int currentWaveNumber;
 
     private bool canSpawn= true;
+    private bool canAnimate = false;
 
     private float nextSpawnTime;
     private void Update()
@@ -28,12 +36,29 @@ public class WaveLogic : MonoBehaviour
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(totalEnemies.Length == 0 && !canSpawn)
+        if(totalEnemies.Length == 0)
         {
-            currentWaveNumber++;
-            canSpawn = true;
-
+            if (currentWaveNumber + 1 != waves.Length)
+            {
+                if(canAnimate == true)
+                {
+                    waveName.text = waves[currentWaveNumber + 1].waveName;
+                    animator.SetTrigger("WaveComplete");
+                    canAnimate = false;
+                }
+            }
+            else
+            {
+                Debug.Log("Game Finished");
+            }
         }
+
+    }
+
+    void SpawnNextWave()
+    {
+        currentWaveNumber++;
+        canSpawn = true;
     }
 
     void SpawnWave()
@@ -42,10 +67,10 @@ public class WaveLogic : MonoBehaviour
         {
             GameObject randomEnemy = currentWave.typeOfEnemies;
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            if(currentWaveNumber == 2)
+            if(waves[currentWaveNumber].waveName == "Final Wave")
             {
                 
-                Instantiate(randomEnemy, spawnBoss.position, Quaternion.identity);
+                Instantiate(randomEnemy, spawnBoss.position, Quaternion.Euler(0, 0, -90));
             }
             else
             {
@@ -57,6 +82,7 @@ public class WaveLogic : MonoBehaviour
             if(currentWave.numberOfEnemies == 0)
             {
                 canSpawn = false;
+                canAnimate = true;
             }
         }
 
