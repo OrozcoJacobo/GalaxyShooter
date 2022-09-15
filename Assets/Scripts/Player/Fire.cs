@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
     [SerializeField]
     private GameObject _laserPrefab;
+    [SerializeField]
+    private GameObject _tripleShotPrefab;
+    private bool _isTripleShotActive = false;
 
     void Update()
     {
@@ -15,7 +19,26 @@ public class Fire : MonoBehaviour
 
     public void FireLaser()
     {
-        Instantiate(_laserPrefab, transform.position, transform.rotation);
+        if(_isTripleShotActive)
+        {
+            Instantiate(_tripleShotPrefab, transform.position + new Vector3 (0, 3f, 0), transform.rotation);
+        }
+        else
+        {
+            Instantiate(_laserPrefab, transform.position, transform.rotation);
+        }
+    }
+
+    public void TripleShotActive()
+    {
+        _isTripleShotActive=true;
+        StartCoroutine(DeactivateTripleShot());
+    }
+
+    IEnumerator DeactivateTripleShot()
+    {
+        yield return new WaitForSeconds(5f);
+        _isTripleShotActive = false;    
     }
 
 }

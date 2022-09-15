@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,11 @@ public class WaveLogic : MonoBehaviour
     [SerializeField]
     private Animator animator;
     [SerializeField]
-    public TextMeshProUGUI waveName;
+    private TextMeshProUGUI waveName;
+    [SerializeField]
+    private GameObject[] powerUpSpawners;
+    [SerializeField]
+    private GameObject[] powerUpsPrefabs;
 
     private Wave currentWave;
     private int currentWaveNumber;
@@ -30,9 +35,13 @@ public class WaveLogic : MonoBehaviour
     private bool canSpawn= true;
     private bool canAnimate = false;
 
+    private int nextItem;
+    private int nextSpawner;
+
     private float nextSpawnTime;
     private void Update()
     {
+
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -67,7 +76,15 @@ public class WaveLogic : MonoBehaviour
         {
             GameObject randomEnemy = currentWave.typeOfEnemies;
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            if(waves[currentWaveNumber].waveName == "Final Wave")
+
+
+
+            //about to implement logic in order to spawn powerups, 
+            //power ups and spawn points are both in lists
+            //select random number from each and use it 
+            StartCoroutine(SpawnPowerUp());
+
+            if (waves[currentWaveNumber].waveName == "Final Wave")
             {
                 
                 Instantiate(randomEnemy, spawnBoss.position, Quaternion.Euler(0, 0, -90));
@@ -85,6 +102,55 @@ public class WaveLogic : MonoBehaviour
                 canAnimate = true;
             }
         }
+
+    }
+    IEnumerator SpawnPowerUp()
+    {
+        nextItem++;
+        if (nextItem > 2)
+        {
+            nextItem = 0;
+        }
+
+        nextSpawner++;
+        if (nextSpawner > 1)
+        {
+            nextSpawner = 0;
+        }
+
+        if (waves[currentWaveNumber].waveName == "Final Wave" && canSpawn)
+        {
+            yield return new WaitForSeconds(5f);
+            Instantiate(powerUpsPrefabs[nextItem], powerUpSpawners[nextSpawner].transform.position, Quaternion.identity);  
+        }
+        else if(canSpawn)
+        {
+            yield return new WaitForSeconds(3f);
+            Instantiate(powerUpsPrefabs[nextItem], powerUpSpawners[nextSpawner].transform.position, Quaternion.identity);
+        }
+        
+
+
+        /*
+        timePassed += Time.deltaTime;
+
+        if (waves[currentWaveNumber].waveName == "Final Wave")
+        {
+            if(spawnInterval < timePassed)
+            {
+                spawnInterval += 5;
+                Instantiate(powerUpsPrefabs[nextItem], powerUpSpawners[nextSpawner].transform.position, Quaternion.identity);
+            }
+        }
+        else
+        {
+            if (spawnInterval < timePassed)
+            {
+                spawnInterval += 3;
+                Instantiate(powerUpsPrefabs[nextItem], powerUpSpawners[nextSpawner].transform.position, Quaternion.identity);
+            }
+        }
+        */
 
     }
 }

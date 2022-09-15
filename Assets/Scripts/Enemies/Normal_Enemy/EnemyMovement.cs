@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if (movingLeft == true)
             {
-                transform.Translate(Vector2.left * _speed * Time.deltaTime);
+                transform.Translate(Vector3.left * _speed * Time.deltaTime);
 
             }
             if (movingLeft == false)
