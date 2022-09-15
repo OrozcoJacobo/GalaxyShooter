@@ -30,7 +30,7 @@ public class PlayerLife : MonoBehaviour
             }
             _playerLife--;
             _currentPlayerLife.UpdateLives(_playerLife);
-            Debug.Log("Player hit, lives: " + _playerLife);
+            //Debug.Log("Player hit, lives: " + _playerLife);
             if(_playerLife <= 0)
             {
                 Destroy(this.gameObject);

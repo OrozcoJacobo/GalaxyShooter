@@ -3,8 +3,7 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     private Level01Controller _playerScore;
-    [SerializeField] private Sprite[] _liveSprites;
-    [SerializeField] private GameObject _livesImage;
+
 
     private void Start()
     {
@@ -16,7 +15,7 @@ public class EnemyDeath : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Laser")
+        if(other.tag == "Laser" || other.tag == "Player")
         {
             _playerScore.AddPlayerScore(10);
             Destroy(gameObject);
