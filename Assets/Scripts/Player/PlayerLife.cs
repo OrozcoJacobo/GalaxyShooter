@@ -5,6 +5,7 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int _playerLife = 3;
     private bool _isShieldActive = false;
+    [SerializeField] private GameObject _shieldPrefab;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,12 +31,12 @@ public class PlayerLife : MonoBehaviour
     public void ShieldsActive()
     {
         _isShieldActive = true;
-        StartCoroutine(DeactivateShields());
+        _shieldPrefab.SetActive(true);
     }
 
-    IEnumerator DeactivateShields()
+    private void DeactivateShields()
     {
-        yield return new WaitForSeconds(5f);
         _isShieldActive = false;
+        _shieldPrefab.SetActive(false);
     }
 }

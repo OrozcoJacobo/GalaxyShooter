@@ -21,11 +21,11 @@ public class Fire : MonoBehaviour
     {
         if(_isTripleShotActive)
         {
-            Instantiate(_tripleShotPrefab, transform.position + new Vector3 (0, 3f, 0), transform.rotation);
+            Instantiate(_tripleShotPrefab, transform.position + new Vector3 (0, 4f, 0), transform.rotation);
         }
         else
         {
-            Instantiate(_laserPrefab, transform.position, transform.rotation);
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1f, 0), transform.rotation);
         }
     }
 
