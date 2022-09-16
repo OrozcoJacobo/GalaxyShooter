@@ -56,4 +56,9 @@ public class Level01Controller : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
