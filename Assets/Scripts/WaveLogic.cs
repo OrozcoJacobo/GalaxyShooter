@@ -54,7 +54,7 @@ public class WaveLogic : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Hello" + canSpawnExtras);
+        //Debug.Log("Hello" + canSpawnExtras);
         InvokeRepeating(nameof(PowerUps), 3f, 3f);
         InvokeRepeating(nameof(Asteroids), 3f, 3f);
     }
@@ -129,23 +129,13 @@ public class WaveLogic : MonoBehaviour
 
     }
 
-    /*
-    private void SpawnPowerUps()
-    {
-        Debug.Log("Enter spawn powerup");
- 
-        StartCoroutine(PowerUps());
-        
-    }
-   */
-
     //IEnumerator PowerUps()
     private void PowerUps()
     {
         Debug.Log("PowerUps Enter" + canSpawnExtras);
         if (waves[currentWaveNumber].waveName == "Final Wave" && canSpawnExtras)
         {
-            Debug.Log("Enter boss wave power up spawn");
+            //Debug.Log("Enter boss wave power up spawn");
             nextItem++;
             if (nextItem > 2)
             {
@@ -163,7 +153,7 @@ public class WaveLogic : MonoBehaviour
         }
         else if(canSpawnExtras)
         {
-            Debug.Log("Enter normal wave power up spawn");
+            //Debug.Log("Enter normal wave power up spawn");
             nextItem++;
             if (nextItem > 2)
             {
@@ -181,13 +171,6 @@ public class WaveLogic : MonoBehaviour
         }
     }
 
-    /*private void SpawnAsteroids()
-    {
- 
-        StartCoroutine(Asteroids());
-        
-    }
-    */
 
     private void Asteroids()
     {

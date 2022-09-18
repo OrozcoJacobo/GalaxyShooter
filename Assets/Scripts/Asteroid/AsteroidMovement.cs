@@ -27,6 +27,10 @@ public class AsteroidMovement : MonoBehaviour
         {
             MovingLeft();
         }
+        if(transform.position.x < -12 || transform.position.x > 12)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void MovingRight()

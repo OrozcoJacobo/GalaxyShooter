@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3195995871128951945}
   - component: {fileID: 3195995871128951947}
   - component: {fileID: -3749699684179077401}
+  - component: {fileID: 1461653414946933748}
   - component: {fileID: -3504694697215472530}
   m_Layer: 0
   m_Name: Asteroid
@@ -116,6 +117,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+--- !u!114 &1461653414946933748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195995871128951950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a16d229f8a17b47b18ab46341bdbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &-3504694697215472530
 Rigidbody2D:
   serializedVersion: 4

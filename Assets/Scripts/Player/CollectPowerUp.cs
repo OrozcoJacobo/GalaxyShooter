@@ -7,6 +7,7 @@ public class CollectPowerUp : MonoBehaviour
     private PlayerMovement speedBoost;
     private Fire tripleShot;
     private PlayerLife shield;
+    [SerializeField] private AudioClip _powerUpPick;
     private void Start()
     {
         speedBoost = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -29,18 +30,21 @@ public class CollectPowerUp : MonoBehaviour
     {
         if(other.tag == "TripleShot")
         {
+            AudioSource.PlayClipAtPoint(_powerUpPick, transform.position);
             //Debug.Log("Triple Shot collected");
             tripleShot.TripleShotActive();
             Destroy(other.gameObject);
         }
         if(other.tag == "Speed")
         {
+            AudioSource.PlayClipAtPoint(_powerUpPick, transform.position);
             //Debug.Log("Speed collected");
             speedBoost.SpeedBoostActive();
             Destroy(other.gameObject);
         }
         if(other.tag == "Shield")
         {
+            AudioSource.PlayClipAtPoint(_powerUpPick, transform.position);
             //Debug.Log("Shield collected");
             shield.ShieldsActive();
             Destroy(other.gameObject);

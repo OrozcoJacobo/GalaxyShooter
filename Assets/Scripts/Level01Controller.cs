@@ -61,4 +61,9 @@ public class Level01Controller : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void BossDefeat()
+    {
+        Debug.Log("GameOver");
+    }
 }
