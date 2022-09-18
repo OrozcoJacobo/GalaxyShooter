@@ -38,7 +38,7 @@ public class BossDeath : MonoBehaviour
                 //_audioSource.Play();
                 Destroy(explosion, 2.3f);
                 _controller.BossDefeat();
-                //SceneManager.LoadScene(0);
+                SceneManager.LoadScene(2);
             }
             
         }
