@@ -78,10 +78,6 @@ public class WaveLogic : MonoBehaviour
                     canSpawnExtras = false;
                 }
             }
-            else
-            {
-                Debug.Log("Game Finished");
-            }
         }
 
     }
@@ -132,7 +128,7 @@ public class WaveLogic : MonoBehaviour
     //IEnumerator PowerUps()
     private void PowerUps()
     {
-        Debug.Log("PowerUps Enter" + canSpawnExtras);
+        //Debug.Log("PowerUps Enter" + canSpawnExtras);
         if (waves[currentWaveNumber].waveName == "Final Wave" && canSpawnExtras)
         {
             //Debug.Log("Enter boss wave power up spawn");

@@ -14,7 +14,7 @@ public class Level01Controller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gameOverText;
     [SerializeField] private Button _restartLevel;
     [SerializeField] private Button _mainMenu;
-    
+
 
     private void Start()
     {
@@ -28,11 +28,11 @@ public class Level01Controller : MonoBehaviour
         _playerScore += score;
         _scoreText.text = "SCORE " + _playerScore;
     }
-    
+
     public void UpdateLives(int currentLives)
     {
         _livesImage.sprite = _liveSprites[currentLives];
-        if(currentLives <= 0)
+        if (currentLives <= 0)
         {
             _gameOverText.gameObject.SetActive(true);
             StartCoroutine(GameOverFlicketRoutine());
@@ -43,7 +43,7 @@ public class Level01Controller : MonoBehaviour
 
     IEnumerator GameOverFlicketRoutine()
     {
-        while(true)
+        while (true)
         {
             _gameOverText.text = "GAME OVER";
             yield return new WaitForSeconds(0.5f);
@@ -54,7 +54,7 @@ public class Level01Controller : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void GoToMainMenu()
@@ -64,6 +64,12 @@ public class Level01Controller : MonoBehaviour
 
     public void BossDefeat()
     {
-        Debug.Log("GameOver");
+        StartCoroutine(EndLevel());
+    }
+
+    IEnumerator EndLevel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(3);
     }
 }

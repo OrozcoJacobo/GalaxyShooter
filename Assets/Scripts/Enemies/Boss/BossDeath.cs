@@ -32,13 +32,13 @@ public class BossDeath : MonoBehaviour
             _bossLife--; 
             if(_bossLife <= 0)
             {
-                //_audioSource.clip = _bossExplosion;
+                _audioSource.clip = _bossExplosion;
                 Destroy(this.gameObject);
                 GameObject explosion = Instantiate(_bossDeath, transform.position, Quaternion.identity);
-                //_audioSource.Play();
+                _audioSource.Play();
                 Destroy(explosion, 2.3f);
                 _controller.BossDefeat();
-                SceneManager.LoadScene(3);
+                
             }
             
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class AsteroidMovement : MonoBehaviour
 {
     [SerializeField] float _speed = 5f;
+    [SerializeField] GameObject _asteroidExplosion;
     private bool _movingLeft = false;
     private bool _movingRight = false;
 
@@ -40,5 +41,14 @@ public class AsteroidMovement : MonoBehaviour
     private void MovingLeft()
     {
         transform.Translate(Vector3.left * _speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Laser")
+        {
+            _asteroidExplosion.GetComponent<AsteroidExplosion>().AsteroidExplode(other, transform.position);
+            Destroy(this.gameObject);
+        }
     }
 }
