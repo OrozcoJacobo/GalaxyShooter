@@ -17,16 +17,23 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position != randomPositionBarricade && inPosition == false)
+
+        Movement();
+        //IsDead();
+    }
+
+    private void Movement()
+    {
+        if (transform.position != randomPositionBarricade && inPosition == false)
         {
             transform.position = Vector3.MoveTowards(transform.position, randomPositionBarricade, _speed * Time.deltaTime);
-            if(transform.position == randomPositionBarricade)
-            {   
+            if (transform.position == randomPositionBarricade)
+            {
                 inPosition = true;
                 movingLeft = true;
             }
         }
-        if(inPosition == true)
+        if (inPosition == true)
         {
             if (movingLeft == true)
             {
@@ -46,6 +53,11 @@ public class EnemyMovement : MonoBehaviour
             {
                 movingLeft = true;
             }
-        }    
+        }
+    }
+
+    public void IsDead()
+    {
+        _speed = 0;
     }
 }

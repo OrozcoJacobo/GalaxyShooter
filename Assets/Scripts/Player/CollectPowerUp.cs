@@ -29,19 +29,19 @@ public class CollectPowerUp : MonoBehaviour
     {
         if(other.tag == "TripleShot")
         {
-            Debug.Log("Triple Shot collected");
+            //Debug.Log("Triple Shot collected");
             tripleShot.TripleShotActive();
             Destroy(other.gameObject);
         }
         if(other.tag == "Speed")
         {
-            Debug.Log("Speed collected");
+            //Debug.Log("Speed collected");
             speedBoost.SpeedBoostActive();
             Destroy(other.gameObject);
         }
         if(other.tag == "Shield")
         {
-            Debug.Log("Shield collected");
+            //Debug.Log("Shield collected");
             shield.ShieldsActive();
             Destroy(other.gameObject);
         }

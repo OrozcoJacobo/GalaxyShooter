@@ -7,6 +7,7 @@ public class PlayerLife : MonoBehaviour
     private bool _isShieldActive = false;
     [SerializeField] private GameObject _shieldPrefab;
     private Level01Controller _currentPlayerLife;
+    [SerializeField] private GameObject _enemy;
 
     private void Start()
     {
@@ -19,11 +20,16 @@ public class PlayerLife : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "EnemyLaser" || other.tag == "Enemy")
+        if(other.tag == "EnemyLaser" || other.tag == "Enemy" || other.tag == "Asteriod")
         {
-            Destroy(other.gameObject);
+            
             if (_isShieldActive)
             {
+                if (other.tag == "Enemy")
+                {
+                    _enemy.GetComponent<Animator>().SetTrigger("EnemyIsDead");
+                    Destroy(other.gameObject, 2.3f);
+                }
                 DeactivateShields();
                 
                 return;
@@ -31,11 +37,22 @@ public class PlayerLife : MonoBehaviour
             _playerLife--;
             _currentPlayerLife.UpdateLives(_playerLife);
             //Debug.Log("Player hit, lives: " + _playerLife);
-            if(_playerLife <= 0)
+            if (other.tag == "Enemy")
+            {
+                _enemy.GetComponent<Animator>().SetTrigger("EnemyIsDead");
+                Destroy(other.gameObject, 2.3f);
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
+            if (_playerLife <= 0)
             {
                 Destroy(this.gameObject);
             }
-            
+
+
+
         }
     }
 

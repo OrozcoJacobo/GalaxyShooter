@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9106903248859713502}
   - component: {fileID: -5852590183505934611}
   - component: {fileID: -4510377037326485885}
+  - component: {fileID: 1002913796739073068}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -174,3 +175,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laserPrefab: {fileID: 876467222580910348, guid: 957d33791c41d7b4b8d38f72298b1581, type: 3}
+--- !u!95 &1002913796739073068
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445416927579047871}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2af7f352b5ef4d84eb3245f031babba8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

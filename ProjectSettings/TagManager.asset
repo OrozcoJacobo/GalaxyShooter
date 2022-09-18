@@ -11,6 +11,7 @@ TagManager:
   - TripleShot
   - Speed
   - Shield
+  - Asteroid
   layers:
   - Default
   - TransparentFX
