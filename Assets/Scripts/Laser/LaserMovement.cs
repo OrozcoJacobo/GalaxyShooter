@@ -13,8 +13,8 @@ public class LaserMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position += moveDirection * _speed * Time.deltaTime;
-        rb.AddForce(transform.up * _speed, ForceMode2D.Impulse);
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        //rb.AddForce(transform.up * _speed, ForceMode2D.Impulse);
         LaserDelete();
     }
 
