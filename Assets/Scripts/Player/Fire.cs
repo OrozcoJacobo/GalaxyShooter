@@ -42,7 +42,7 @@ public class Fire : MonoBehaviour
         {
             _canFire = Time.time + _fireRate;
             Instantiate(_laserPrefab, transform.position + new Vector3(0, 1f, 0), transform.rotation);
-            //_audioSource.Play();
+            _audioSource.Play();
         }
         
     }
