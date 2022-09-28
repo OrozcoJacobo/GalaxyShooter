@@ -86,6 +86,7 @@ public class PlayerLife : MonoBehaviour
             if (_playerLife <= 0)
             {
                 Destroy(this.gameObject);
+
             }
 
 

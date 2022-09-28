@@ -15,13 +15,14 @@ public class Level01Controller : MonoBehaviour
     [SerializeField] private Button _restartLevel;
     [SerializeField] private Button _mainMenu;
 
-
     private void Start()
     {
         _scoreText.text = "SCORE 0";
         _gameOverText.gameObject.SetActive(false);
         _restartLevel.gameObject.SetActive(false);
         _mainMenu.gameObject.SetActive(false);
+
+        
     }
     public void AddPlayerScore(int score)
     {
@@ -34,10 +35,12 @@ public class Level01Controller : MonoBehaviour
         _livesImage.sprite = _liveSprites[currentLives];
         if (currentLives <= 0)
         {
+            GameObject.Find("WaveSpawner").GetComponent<WaveLogic>().PlayerDied();
             _gameOverText.gameObject.SetActive(true);
             StartCoroutine(GameOverFlicketRoutine());
             _restartLevel.gameObject.SetActive(true);
             _mainMenu.gameObject.SetActive(true);
+            
         }
     }
 

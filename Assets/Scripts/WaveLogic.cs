@@ -182,5 +182,10 @@ public class WaveLogic : MonoBehaviour
        
         
     }
+
+    public void PlayerDied()
+    {
+        canSpawn = false;
+    }
    
 }
